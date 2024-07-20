@@ -1,5 +1,7 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
+
 const MAX_SHOWN_USERS = 2;
 
 export const Participants = () => {
@@ -13,7 +15,7 @@ export const Participants = () => {
 export const ParticipantsSkeleton = () => {
   return (
     <div className="absolute h-12 top-2 right-2 bg-white rounded-md flex items-center w-[100px]">
-      ParticipantsSkeleton
+      <Skeleton className="h-full w-full bg-neutral-200" />
     </div>
   );
 };
