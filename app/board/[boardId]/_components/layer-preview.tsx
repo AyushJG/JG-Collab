@@ -5,7 +5,9 @@ import { LayerType } from "@/types/canvas";
 import { memo } from "react";
 import { Rectangle } from "./rectangle";
 import { Ellipse } from "./ellipse";
-
+import { Text } from "./text";
+import { Note } from "./note";
+import { Path } from "./path";
 import { colorToCss } from "@/lib/utils";
 
 interface LayerPreviewProps {
@@ -24,20 +26,43 @@ export const LayerPreview = memo(
 
     switch (layer.type) {
       case LayerType.Path:
-        return <></>;
+        return (
+          <Path
+            x={layer.x}
+            y={layer.y}
+            fill={layer.fill ? colorToCss(layer.fill) : "#000"}
+            key={id}
+            points={layer.points}
+            onPointerDown={(e) => onLayerPointerDown(e, id)}
+            stroke={selectionColor}
+          />
+        );
       case LayerType.Note:
-        return <></>;
+        return (
+          <Note
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
       case LayerType.Text:
-        return <></>;
+        return (
+          <Text
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
       case LayerType.Ellipse:
         return (
-          // <Ellipse
-          //   id={id}
-          //   layer={layer}
-          //   onPointerDown={onLayerPointerDown}
-          //   selectionColor={selectionColor}
-          // />
-          <></>
+          <Ellipse
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
         );
       case LayerType.Rectangle:
         return (
