@@ -44,7 +44,7 @@ const BoardList = ({ orgId, query }: BoardListProps) => {
   if (!data.length) {
     return <EmptyBoards />;
   }
-  console.log({ aa: query.search });
+
   return (
     <div>
       <h2 className="text-3xl">
